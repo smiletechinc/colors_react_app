@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import TodoItem from './TodoItem'
+//import TodoItem from './TodoItem'
 
 const useStyles = makeStyles((theme) => ({
 	todo: {
@@ -92,7 +92,7 @@ const Todo = () => {
 			<header>
 				<Image
 					className={classes.logo}
-					src="/static/img/splashscreen-icon-384x384.png"
+					src="/static/img/Icon-App.png"
 					alt=""
 					width="192"
 					height="192"

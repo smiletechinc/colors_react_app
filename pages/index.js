@@ -1,11 +1,18 @@
 import Fork from '../components/Fork'
-import Todo from '../components/Todo'
+import Header from '../components/header'
+//import Todo from '../components/Todo'
+import TodoItem from '../components/TodoItem'
+import OutlinedCard from '../components/card'
 
 export default function Index({ stars }) {
 	return (
+		
+
+		
 		<main>
-			<Fork stars={stars} />
-			<Todo />
+			
+			<Header />
+			<TodoItem />
 		</main>
 	)
 }

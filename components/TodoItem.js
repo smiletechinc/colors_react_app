@@ -1,19 +1,15 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Fab from '@material-ui/core/Fab'
-import Checkbox from '@material-ui/core/Checkbox'
+// import Fab from '@material-ui/core/Fab'
+import Fab from '@mui/material/Fab';
+import { Button } from '@material-ui/core';
+import { pink } from '@mui/material/colors';
+import { useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import OutlinedCard from './card';
 
-const DeleteIcon = () => (
-	<svg
-		className="MuiSvgIcon-root"
-		focusable="false"
-		viewBox="0 0 24 24"
-		aria-hidden="true"
-		role="presentation"
-	>
-		<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path>
-	</svg>
-)
+
+
 
 const useStyles = makeStyles((theme) => ({
 	todoItem: {
@@ -26,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 		animationDelay: '0s',
 		animationTimingFunction: 'cubic-bezier(0.1, 0.23, 0.23, 1.44)',
 		'&:nth-child(even)': {
-			background: '#EEF6FF',
+			background: '#EEF2FF',
 		},
 	},
 	'@keyframes slideDown': {
@@ -38,46 +34,38 @@ const useStyles = makeStyles((theme) => ({
 			opacity: 1,
 			transform: 'translateY(0px)',
 		},
-	},
-	text: {
-		flex: 1,
-		display: 'flex',
-		alignItems: 'center',
-	},
-	textWithStrike: {
-		textDecoration: 'line-through',
-	},
+	}
 }))
 
-const TodoItem = ({ todo, updateTodo, removeTodo }) => {
+const TodoItem = ({  }) => {
 	const classes = useStyles()
+	const [isShown, setIsShown] = useState(false);
 
+	const handleClick = event => {
+		
+		setIsShown(current => !current);
+
+		};
+	
 	return (
-		<li className={classes.todoItem}>
-			<label
-				className={
-					todo.completed
-						? `${classes.textWithStrike} ${classes.text}`
-						: classes.text
-				}
-			>
-				<Checkbox
-					checked={todo.completed}
-					onChange={() => updateTodo({ ...todo, completed: !todo.completed })}
-					color="primary"
-				/>
-				{todo.text}
-			</label>
-			<Fab
-				aria-label="Delete Todo"
-				onClick={() => removeTodo(todo)}
+		<div className={classes.todoItem}>
+		<Fab 
+				aria-label="add" 
+				onClick={handleClick}
 				color="secondary"
-				size="small"
-			>
-				<DeleteIcon />
-			</Fab>
-		</li>
-	)
-}
+ 				size="large" 
+				variant='extended'>
+			
+			<AddIcon sx={{ color: pink[200], fontSize: 40}}/>
+					
+		</Fab>
+		
+		{isShown && <OutlinedCard />}
+		</div>
+		 
+	);
+	
+	}
+
 
 export default TodoItem
