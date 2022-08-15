@@ -3,9 +3,7 @@ import styled from '@emotion/styled';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container, Slider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Color from './color';
+import { SliderValueLabel } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
 	space: {
@@ -42,8 +41,6 @@ const card = (
     {/* <CardActions>
       <Button size="small">Submit</Button>
     </CardActions> */}      
-    
-
   </React.Fragment>
 );
 
@@ -97,29 +94,49 @@ const blue = createMuiTheme({
 });
 
 
+
 export default function OutlinedCard() {
   const classes = useStyles();
+  const [sliderValuer, setsliderValuer] = useState(15)
+  const [sliderValueg, setsliderValueg] = useState(15)
+  const [sliderValueb, setsliderValueb] = useState(15)
+
   const [text1, setText1] = useState(""); 
   const [text2, setText2] = useState(""); 
   const [text3, setText3] = useState(""); 
   const [text4, setText4] = useState(""); 
 
 
-      function handleChange1(e) {
-        setText1(e.target.value);
+      function handleChange1(e, newvalue) {
+        let s = Number(e.target.value)
+        let x = Number(newvalue)
+
+        setsliderValuer(newvalue)
+        setsliderValuer(s)
+        setText1(newvalue)
       }
-      function handleChange2(e) {
-        setText2(e.target.value);
+      function handleChange2(e, newvalue) {
+        let s = Number(e.target.value)
+        let x = Number(newvalue)
+
+        setsliderValueg(newvalue)
+        setsliderValueg(s)
+        setText2(newvalue)
       }
-      function handleChange3(e) {
-        setText3(e.target.value);
+      function handleChange3(e, newvalue) {
+        let s = Number(e.target.value)
+        let x = Number(newvalue)
+
+        setsliderValueb(newvalue)
+        setsliderValueb(s)
+        setText3(newvalue)
       }
       function handleChange4(e) {
         setText4(e.target.value);
       }
-    function handleSubmit(e) {
-    e.preventDefault();
-    console.log(text1);
+      function handleSubmit(e) {
+      e.preventDefault();
+      console.log(text1);
 
   }
   let red2 = ((document.getElementById("red")||{}).value)||"";
@@ -137,8 +154,7 @@ export default function OutlinedCard() {
   }).join('')
   
   let colorhex = rgbToHex(r,g,b);
-  var colorname= ((document.getElementById("name")||{}).value)||"";
-  console.log(colorname);
+  
 
 
   return (
@@ -149,59 +165,63 @@ export default function OutlinedCard() {
         {card}
       <Space>
         <div>
-        <Color colorvalue = {rgbToHex(r,g,b)}/>
+        <Color 
+            colorvalue = {rgbToHex(r,g,b)} 
+            colorname= {((document.getElementById("name")||{}).value)||""}
+            />
       </div>
         <ThemeProvider theme={red}>
-          
           <Slider 
-            defaultValue={50} 
+            //defaultValue={50}
+            min={0}
+            max={255}
             aria-label="Default" 
-            valueLabelDisplay="auto" 
+            //valueLabelDisplay="auto"
+            value = {sliderValuer} 
+            onChange={handleChange1}
             color='primary'
           />
         </ThemeProvider>
         
         <ThemeProvider theme={green}>
           <Slider 
-
-            defaultValue={50} 
+            //defaultValue={50} 
+            min={0}
+            max={255}
             aria-label="Default" 
-            valueLabelDisplay="auto" 
+            //valueLabelDisplay="auto" 
+            value = {sliderValueg} 
+            onChange={handleChange2}
             color='primary'
             />
         </ThemeProvider>
         
         <ThemeProvider theme={blue}>
            <Slider 
-            defaultValue={50} 
+            //defaultValue={50} 
+            min={0}
+            max={255}
             aria-label="Default" 
-            valueLabelDisplay="auto" 
+            value = {sliderValueb} 
+            onChange={handleChange3}
+            //valueLabelDisplay="auto" 
             color='primary'
             />
         </ThemeProvider>
         <p> R,G,B: ({red2}, {green2}, {blue2})</p>
         <p> Hex: {colorhex}</p>
       <div>
-
       <form onSubmit={handleSubmit}>
         {/* <input type="text" value={text} placeholder='Enter value for Red' onChange={handleChange} variant="standard" /> */}
         <TextField id="red" value={text1} label="Enter value for Red" onChange={handleChange1} variant="standard" />
         <TextField id="green" value={text2} label="Enter value for Green" onChange={handleChange2} variant="standard" />
         <TextField id="blue" value={text3} label="Enter value for Blue" onChange={handleChange3} variant="standard" />
         <TextField id="name" value={text4} label="Color Name" onChange={handleChange4} variant="standard" />
-
       </form>
-      
-      </div>
-       
-
+      </div>       
       </Space>
       </Card>
     </Box>
     </Container>
-    
   );
-  
 }
-   
-

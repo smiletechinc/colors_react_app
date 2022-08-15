@@ -1,15 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-// import Fab from '@material-ui/core/Fab'
 import Fab from '@mui/material/Fab';
-import { Button } from '@material-ui/core';
 import { pink } from '@mui/material/colors';
 import { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import OutlinedCard from './card';
-
-
-
 
 const useStyles = makeStyles((theme) => ({
 	todoItem: {
@@ -66,6 +61,5 @@ const TodoItem = ({  }) => {
 	);
 	
 	}
-
-
+	
 export default TodoItem
