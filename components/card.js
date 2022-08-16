@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import Color from './color';
+import Submit from './submit';
 import { SliderValueLabel } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
@@ -19,6 +20,11 @@ const useStyles = makeStyles(() => ({
     height: 600,
     justifyContent: 'center',
   	},
+  
+  center:{
+    justifyContent: 'center',
+    display: 'flex'
+  }
 }))
 
 const Space = styled('div')`
@@ -95,11 +101,11 @@ const blue = createMuiTheme({
 
 
 
-export default function OutlinedCard() {
+export default function OutlinedCard(props) {
   const classes = useStyles();
-  const [sliderValuer, setsliderValuer] = useState(15)
-  const [sliderValueg, setsliderValueg] = useState(15)
-  const [sliderValueb, setsliderValueb] = useState(15)
+  const [sliderValuer, setsliderValuer] = useState(0)
+  const [sliderValueg, setsliderValueg] = useState(0)
+  const [sliderValueb, setsliderValueb] = useState(0)
 
   const [text1, setText1] = useState(""); 
   const [text2, setText2] = useState(""); 
@@ -211,6 +217,7 @@ export default function OutlinedCard() {
         <p> R,G,B: ({red2}, {green2}, {blue2})</p>
         <p> Hex: {colorhex}</p>
       <div>
+        
       <form onSubmit={handleSubmit}>
         {/* <input type="text" value={text} placeholder='Enter value for Red' onChange={handleChange} variant="standard" /> */}
         <TextField id="red" value={text1} label="Enter value for Red" onChange={handleChange1} variant="standard" />
@@ -218,7 +225,14 @@ export default function OutlinedCard() {
         <TextField id="blue" value={text3} label="Enter value for Blue" onChange={handleChange3} variant="standard" />
         <TextField id="name" value={text4} label="Color Name" onChange={handleChange4} variant="standard" />
       </form>
-      </div>       
+      
+      </div> 
+      <Submit 
+       colorvalue = {rgbToHex(r,g,b)} 
+       colorname= {((document.getElementById("name")||{}).value)||""}
+       changeState = {props.changeState}
+       />
+
       </Space>
       </Card>
     </Box>

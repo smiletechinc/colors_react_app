@@ -22,8 +22,8 @@ export default function color(props){
     }
 }))
 const classes = useStyles();
-   console.log(props.colorvalue)
-   console.log(props.colorname)
+  //  console.log(props.colorvalue)
+  //  console.log(props.colorname)
   return (
         
         <Space>        
