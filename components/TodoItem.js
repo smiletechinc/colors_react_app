@@ -31,7 +31,11 @@ const useStyles = makeStyles((theme) => ({
 		},
 	}
 }))
+const handleClick = event => {
+		
+	setIsShown(current => !current);
 
+	};
 const TodoItem = ({  }) => {
 	const classes = useStyles()
 	const [isShown, setIsShown] = useState(false);
@@ -55,9 +59,8 @@ const TodoItem = ({  }) => {
 					
 		</Fab>
 		
-		{isShown && <OutlinedCard />}
+		{isShown && <OutlinedCard count={isShown} changeState={(count)=>handleClick(!count)}/>}	
 		</div>
-		 
 	);
 	
 	}
