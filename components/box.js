@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@mui/material/Box'
@@ -13,25 +13,29 @@ const Space = styled('div')`
 	max-width: 1024px;
 `
 
-export default function color(props) {
+export default function Newbox(props) {
+	const hex = props.hexcolor
+
 	const useStyles = makeStyles(() => ({
 		color: {
-			backgroundColor: props.colorvalue,
+			backgroundColor: hex,
 		},
 	}))
 	const classes = useStyles()
-	//  console.log(props.colorvalue)
-	//  console.log(props.colorname)
 	return (
-		<Space>
-			<Box
-				sx={{
-					width: 200,
-					height: 60,
-					borderRadius: '12px',
-				}}
-				className={classes.color}
-			></Box>
-		</Space>
+		<div>
+			<h1>{props.data}</h1>
+			<h1>COLOR VALUE: {hex}</h1>
+			<Space>
+				<Box
+					sx={{
+						width: 200,
+						height: 60,
+						borderRadius: '12px',
+					}}
+					className={classes.color}
+				></Box>
+			</Space>
+		</div>
 	)
 }

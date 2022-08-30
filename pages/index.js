@@ -3,6 +3,7 @@ import Header from '../components/header'
 //import Todo from '../components/Todo'
 import TodoItem from '../components/TodoItem'
 import OutlinedCard from '../components/card'
+import Newbox from '../components/box'
 
 export default function Index({ stars }) {
 	return (

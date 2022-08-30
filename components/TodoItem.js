@@ -1,10 +1,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Fab from '@mui/material/Fab';
-import { pink } from '@mui/material/colors';
-import { useState } from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import OutlinedCard from './card';
+import Fab from '@mui/material/Fab'
+import { pink } from '@mui/material/colors'
+import { useState } from 'react'
+import AddIcon from '@mui/icons-material/Add'
+import OutlinedCard from './card'
+import Newbox from './box'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
 	todoItem: {
@@ -29,40 +31,42 @@ const useStyles = makeStyles((theme) => ({
 			opacity: 1,
 			transform: 'translateY(0px)',
 		},
-	}
+	},
 }))
-const handleClick = event => {
-		
-	setIsShown(current => !current);
 
-	};
-const TodoItem = ({  }) => {
+const TodoItem = ({}) => {
 	const classes = useStyles()
-	const [isShown, setIsShown] = useState(false);
+	const [isShown, setIsShown] = useState(false)
+	const [color, setcolor] = useState('')
 
-	const handleClick = event => {
-		
-		setIsShown(current => !current);
+	const handleClick = () => {
+		setIsShown((current) => !current)
+	}
+	function alertFunc(data) {
+		setcolor(data)
+	}
 
-		};
-	
 	return (
 		<div className={classes.todoItem}>
-		<Fab 
-				aria-label="add" 
+			<Fab
+				aria-label="add"
 				onClick={handleClick}
 				color="secondary"
- 				size="large" 
-				variant='extended'>
-			
-			<AddIcon sx={{ color: pink[200], fontSize: 40}}/>
-					
-		</Fab>
-		
-		{isShown && <OutlinedCard count={isShown} changeState={(count)=>handleClick(!count)}/>}	
+				size="large"
+				variant="extended"
+			>
+				<AddIcon sx={{ color: pink[200], fontSize: 40 }} />
+			</Fab>
+			<Newbox hexcolor={color} />
+			{isShown && (
+				<OutlinedCard
+					newFunc={alertFunc}
+					count={isShown}
+					changeState={handleClick}
+				/>
+			)}
 		</div>
-	);
-	
-	}
-	
+	)
+}
+
 export default TodoItem
