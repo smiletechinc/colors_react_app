@@ -6,8 +6,12 @@ import { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import OutlinedCard from './card'
 import Newbox from './box'
-import { Button } from '@material-ui/core'
+import styled from '@emotion/styled'
 
+const Space = styled('div')`
+	margin-top: 20px;
+	padding: 0 90px;
+`
 const useStyles = makeStyles((theme) => ({
 	todoItem: {
 		display: 'flex',
@@ -47,24 +51,28 @@ const TodoItem = ({}) => {
 	}
 
 	return (
-		<div className={classes.todoItem}>
-			<Fab
-				aria-label="add"
-				onClick={handleClick}
-				color="secondary"
-				size="large"
-				variant="extended"
-			>
-				<AddIcon sx={{ color: pink[200], fontSize: 40 }} />
-			</Fab>
-			<Newbox hexcolor={color} />
-			{isShown && (
-				<OutlinedCard
-					newFunc={alertFunc}
-					count={isShown}
-					changeState={handleClick}
-				/>
-			)}
+		<div>
+			<div className={classes.todoItem}>
+				<Fab
+					aria-label="add"
+					onClick={handleClick}
+					color="secondary"
+					size="large"
+					variant="extended"
+				>
+					<AddIcon sx={{ color: pink[200], fontSize: 40 }} />
+				</Fab>
+				{isShown && (
+					<OutlinedCard
+						newFunc={alertFunc}
+						count={isShown}
+						changeState={handleClick}
+					/>
+				)}
+			</div>
+			<div>
+				<Space>{isShown == false && <Newbox hexcolor={color} />}</Space>
+			</div>
 		</div>
 	)
 }

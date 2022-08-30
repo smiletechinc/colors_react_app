@@ -12,6 +12,11 @@ const Space = styled('div')`
 	height: 64px;
 	max-width: 1024px;
 `
+const Gap = styled('div')`
+	margin-top: 0px;
+	padding: 0 30px;
+	padding-top: 1px;
+`
 
 export default function Newbox(props) {
 	const hex = props.hexcolor
@@ -25,16 +30,20 @@ export default function Newbox(props) {
 	return (
 		<div>
 			<h1>{props.data}</h1>
-			<h1>COLOR VALUE: {hex}</h1>
 			<Space>
 				<Box
 					sx={{
-						width: 200,
-						height: 60,
+						width: 150,
+						height: 70,
 						borderRadius: '12px',
 					}}
 					className={classes.color}
-				></Box>
+				>
+					<Gap>
+						{' '}
+						<h2>{hex}</h2>
+					</Gap>
+				</Box>
 			</Space>
 		</div>
 	)

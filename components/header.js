@@ -1,51 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
 // import { Link } from '@material-ui/core';
 
 const HeaderRoot = styled(`header`)`
-  left: 0;
-  width: 100%;
-  height: 64px;
-  position: sticky;
-  top: 0px;
-  z-index: 1000;
-`;
+	left: 0;
+	width: 100%;
+	height: 64px;
+	position: sticky;
+	top: 0px;
+	z-index: 1000;
+`
 
 const HeaderContainer = styled('div')`
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
-`;
+	background: rgba(255, 255, 255, 0.98);
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
+`
 
 const NavRoot = styled('nav')`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
-  //padding: 0 16px;
-  height: 64px;
-  max-width: 1024px;
-`;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin: 0 auto;
+	//padding: 0 16px;
+	height: 64px;
+	max-width: 1024px;
+`
 
 const ListItem = styled('div')`
-  display: flex;
-  padding: 0px 16px;
-  
-`;
+	display: flex;
+	padding: 0px 16px;
+`
 
 const ListActions = styled('div')`
-  display: flex;
-  
-`;
+	display: flex;
+`
 
 const Space = styled('div')`
-  flex: 1 1 auto;
-`;
+	flex: 1 1 auto;
+`
 
 const Space1 = styled('div')`
-  flex: 9 9 auto;
-`;
+	flex: 9 9 auto;
+`
 
 const Dropdown = styled('div')`
 
@@ -77,51 +75,44 @@ const Dropdown = styled('div')`
   
 
   }
-`;
+`
 
 const Link = styled.a`
-    color: seagreen;
-    &:hover {
-        cursor: pointer;
-        color: #000;
-      }
-`;
-
+	color: seagreen;
+	&:hover {
+		cursor: pointer;
+		color: #000;
+	}
+`
 
 export function Header({ t }) {
-  return (
-    <HeaderRoot>
-      <HeaderContainer>
-        <NavRoot>
-            
-            
-        
+	return (
+		<HeaderRoot>
+			<HeaderContainer>
+				<NavRoot>
+					<Space />
+					<h1>Colors App</h1>
+					<Space1 />
+					<Space1 />
+					<Space1 />
 
-            <h1>Colors App</h1>
-             <Space1 />
-             <Space1 />
-             <Space1 />
+					<ListItem>
+						<h3>
+							<Link href="http://localhost:3000/Login">Login</Link>
+						</h3>
+					</ListItem>
 
-           <ListItem>
-            <h3>
-                <Link href = 'http://localhost:3000/Login'>Login</Link>
-            </h3>
-            </ListItem> 
-            
-            <Space />
-            
+					<Space />
 
-          <ListActions>
-
-          </ListActions>
-        </NavRoot>
-      </HeaderContainer>
-    </HeaderRoot>
-  );
+					<ListActions></ListActions>
+				</NavRoot>
+			</HeaderContainer>
+		</HeaderRoot>
+	)
 }
 
 Header.propTypes = {
-  t: PropTypes.func,
-};
+	t: PropTypes.func,
+}
 
-export default Header;
+export default Header
