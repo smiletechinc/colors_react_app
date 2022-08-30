@@ -17,13 +17,8 @@ import Submit from './submit'
 const useStyles = makeStyles(() => ({
 	space: {
 		width: 300,
-		height: 600,
+		height: 650,
 		justifyContent: 'center',
-	},
-
-	center: {
-		justifyContent: 'center',
-		display: 'flex',
 	},
 }))
 

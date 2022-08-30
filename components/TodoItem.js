@@ -7,7 +7,6 @@ import AddIcon from '@mui/icons-material/Add'
 import OutlinedCard from './card'
 import Newbox from './box'
 import styled from '@emotion/styled'
-import { Button } from '@material-ui/core'
 
 const Space = styled('div')`
 	margin-top: 20px;
