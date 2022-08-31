@@ -1,13 +1,12 @@
 import Header from '../components/header'
-import TodoItem from '../components/TodoItem'
-import OutlinedCard from '../components/card'
-import Newbox from '../components/box'
+import Frontpage from '../components/Frontpage'
+import Todo from '../components/Todo'
 
 export default function Index({ stars }) {
 	return (
 		<main>
 			<Header />
-			<TodoItem />
+			<Frontpage />
 		</main>
 	)
 }

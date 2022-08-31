@@ -17,7 +17,7 @@ import Submit from './submit'
 const useStyles = makeStyles(() => ({
 	space: {
 		width: 300,
-		height: 650,
+		height: 620,
 		justifyContent: 'center',
 	},
 }))
@@ -39,9 +39,6 @@ const card = (
 				Real Time Color Card
 			</Typography>
 		</CardContent>
-		{/* <CardActions>
-      <Button size="small">Submit</Button>
-    </CardActions> */}
 	</React.Fragment>
 )
 
@@ -104,7 +101,7 @@ export default function OutlinedCard(props) {
 	const [text3, setText3] = useState('')
 	const [text4, setText4] = useState('')
 
-	const [val, setval] = useState('#000000')
+	const [val, setval] = useState('')
 
 	function handleChange1(e, newvalue) {
 		let s = Number(e.target.value)
@@ -156,20 +153,19 @@ export default function OutlinedCard(props) {
 
 	let colorhex = rgbToHex(r, g, b)
 
-	useEffect(() => {
-		//console.log('outside', val)
-	}, [val])
-
 	const dataval = (value) => {
 		setval(value)
-		//console.log('inside', value)
 	}
+
+	useEffect(() => {
+		{
+			props.newFunc(val)
+		}
+	}, [val])
 
 	return (
 		<Container className={classes.space}>
 			<h1> {props.data}</h1>
-
-			{props.newFunc(val)}
 
 			<Box sx={{ borderRadius: '50px' }}>
 				<Card
@@ -231,7 +227,6 @@ export default function OutlinedCard(props) {
 						<p> Hex: {colorhex}</p>
 						<div>
 							<form onSubmit={handleSubmit}>
-								{/* <input type="text" value={text} placeholder='Enter value for Red' onChange={handleChange} variant="standard" /> */}
 								<TextField
 									id="red"
 									value={text1}

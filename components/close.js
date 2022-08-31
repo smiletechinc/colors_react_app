@@ -11,7 +11,7 @@ const Space = styled('div')`
 `
 
 export default function Close(props) {
-	const addcolor = () => {
+	const closetab = () => {
 		{
 			props.changeState()
 		}
@@ -20,7 +20,7 @@ export default function Close(props) {
 	return (
 		<>
 			<Space>
-				<CloseIcon onClick={addcolor} />
+				<CloseIcon onClick={closetab} />
 			</Space>
 		</>
 	)
