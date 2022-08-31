@@ -1,17 +1,26 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Fab from '@mui/material/Fab'
+import { makeStyles } from '@material-ui/core/styles'
 import { pink } from '@mui/material/colors'
 import { useState } from 'react'
+import Grid from '@mui/material/Grid'
 import AddIcon from '@mui/icons-material/Add'
 import OutlinedCard from './card'
 import Newbox from './box'
+import { Box } from '@material-ui/core'
 import styled from '@emotion/styled'
 
 const Space = styled('div')`
 	margin-top: 20px;
 	padding: 0 90px;
 `
+const darkTheme = createTheme({
+	palette: {
+		mode: 'dark',
+	},
+})
+
 const useStyles = makeStyles((theme) => ({
 	todoItem: {
 		display: 'flex',
@@ -36,18 +45,30 @@ const useStyles = makeStyles((theme) => ({
 			transform: 'translateY(0px)',
 		},
 	},
+	space: {
+		width: 300,
+		height: 620,
+		justifyContent: 'center',
+	},
 }))
 
-const TodoItem = ({}) => {
+const Frontpage = ({}) => {
 	const classes = useStyles()
 	const [isShown, setIsShown] = useState(false)
-	const [color, setcolor] = useState('')
+	const [colors, setcolor] = useState([])
 
 	const handleClick = () => {
 		setIsShown((current) => !current)
 	}
 	function alertFunc(data) {
-		setcolor(data)
+		let tempcolors = []
+		colors.forEach((clr) => {
+			tempcolors.push(clr)
+		})
+		tempcolors.push(data)
+		console.log(tempcolors)
+		setcolor(tempcolors)
+		// setcolor(data)
 	}
 
 	return (
@@ -62,6 +83,7 @@ const TodoItem = ({}) => {
 				>
 					<AddIcon sx={{ color: pink[200], fontSize: 40 }} />
 				</Fab>
+
 				{isShown && (
 					<OutlinedCard
 						newFunc={alertFunc}
@@ -70,11 +92,17 @@ const TodoItem = ({}) => {
 					/>
 				)}
 			</div>
+
 			<div>
-				<Space>{isShown == false && <Newbox hexcolor={color} />}</Space>
+				<Space>
+					{isShown == false &&
+						colors.map((color) => {
+							return <Newbox hexcolor={color} />
+						})}
+				</Space>
 			</div>
 		</div>
 	)
 }
 
-export default TodoItem
+export default Frontpage

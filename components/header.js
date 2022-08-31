@@ -13,7 +13,7 @@ const HeaderRoot = styled(`header`)`
 `
 
 const HeaderContainer = styled('div')`
-	background: rgba(255, 255, 255, 0.98);
+	background: rgba(73, 154, 192, 0.98);
 	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);
 `
 

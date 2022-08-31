@@ -9,13 +9,6 @@ const Space = styled('div')`
 `
 
 export default function Submit(props) {
-	const useStyles = makeStyles(() => ({
-		color: {
-			backgroundColor: props.colorvalue,
-		},
-	}))
-	const classes = useStyles()
-
 	let hex = props.colorvalue
 	let name = props.colorname
 
