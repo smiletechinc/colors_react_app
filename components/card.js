@@ -261,6 +261,8 @@ export default function OutlinedCard(props) {
 							colorvalue={rgbToHex(r, g, b)}
 							colorname={(document.getElementById('name') || {}).value || ''}
 							dataFunc={dataval}
+
+							//storage={props.storage}
 						/>
 					</Space>
 				</Card>

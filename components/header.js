@@ -78,7 +78,7 @@ const Dropdown = styled('div')`
 `
 
 const Link = styled.a`
-	color: seagreen;
+	color: black;
 	&:hover {
 		cursor: pointer;
 		color: #000;
