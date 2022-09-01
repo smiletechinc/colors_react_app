@@ -3,10 +3,11 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Fab from '@mui/material/Fab'
 import { makeStyles } from '@material-ui/core/styles'
 import { pink } from '@mui/material/colors'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import AddIcon from '@mui/icons-material/Add'
 import OutlinedCard from './card'
+import { ImageList } from '@mui/material'
 import Newbox from './box'
 import { Box } from '@material-ui/core'
 import styled from '@emotion/styled'
@@ -60,17 +61,26 @@ const Frontpage = ({}) => {
 	const handleClick = () => {
 		setIsShown((current) => !current)
 	}
-	function alertFunc(data) {
+	function alertFunc(hex) {
 		let tempcolors = []
 		colors.forEach((clr) => {
 			tempcolors.push(clr)
 		})
-		tempcolors.push(data)
-		console.log(tempcolors)
+		if (hex !== '') {
+			tempcolors.push(hex)
+		} else console.log(tempcolors)
 		setcolor(tempcolors)
-		// setcolor(data)
 	}
-
+	function nameFunc(name) {
+		let colornames = []
+		colorname.forEach((clr) => {
+			colornames.push(clr)
+		})
+		if (name !== '') {
+			colornames.push(name)
+		} else console.log(colornames)
+		setcolorname(colornames)
+	}
 	return (
 		<div>
 			<div className={classes.todoItem}>
@@ -87,19 +97,22 @@ const Frontpage = ({}) => {
 				{isShown && (
 					<OutlinedCard
 						newFunc={alertFunc}
+						nameFunc={nameFunc}
 						count={isShown}
 						changeState={handleClick}
+						//storage={handle}
 					/>
 				)}
 			</div>
 
 			<div>
-				<Space>
+				<ImageList sx={{ width: 1500, height: 600 }} cols={6} rowHeight={5}>
 					{isShown == false &&
 						colors.map((color) => {
 							return <Newbox hexcolor={color} />
 						})}
-				</Space>
+				</ImageList>
+				<Space></Space>
 			</div>
 		</div>
 	)
