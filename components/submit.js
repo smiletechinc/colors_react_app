@@ -10,9 +10,7 @@ const Space = styled('div')`
 
 export default function Submit(props) {
 	let hex = props.colorvalue
-	let name = props.colorname
-	let temp = { hex, name }
-	console.log(temp)
+
 	const addcolor = () => {
 		{
 			props.dataFunc(hex)

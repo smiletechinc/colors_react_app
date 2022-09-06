@@ -20,7 +20,7 @@ const Gap = styled('div')`
 
 export default function Newbox(props) {
 	const hex = props.hexcolor
-	
+	// console.log("box:", hex, name)
 
 	const useStyles = makeStyles(() => ({
 		color: {
@@ -47,6 +47,7 @@ export default function Newbox(props) {
 					<Gap>
 						{' '}
 						<h5>{hex}</h5>
+						{/* <h5>{name}</h5> */}
 					</Gap>
 				</Box>
 			</Space>

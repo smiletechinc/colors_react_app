@@ -98,7 +98,7 @@ export function Header({ t }) {
 
 					<ListItem>
 						<h3>
-							<Link href="http://localhost:3000/Login">Login</Link>
+							<Link href="http://localhost:3000/login">Login</Link>
 						</h3>
 					</ListItem>
 
