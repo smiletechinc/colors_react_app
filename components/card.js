@@ -17,7 +17,7 @@ import Submit from './submit'
 const useStyles = makeStyles(() => ({
 	space: {
 		width: 300,
-		height: 620,
+		height: 650,
 		justifyContent: 'center',
 	},
 }))
@@ -171,17 +171,15 @@ export default function OutlinedCard(props) {
 				<Card
 					className={classes.space}
 					variant="outlined"
-					sx={{ maxWidth: 600 }}
+					sx={{ maxWidth: 600, borderRadius: '30px' }}
 				>
 					<Close changeState={props.changeState} />
 					{card}
 					<Space>
-						<div>
-							<Color
-								colorvalue={rgbToHex(r, g, b)}
-								colorname={(document.getElementById('name') || {}).value || ''}
-							/>
-						</div>
+						<Color
+							colorvalue={rgbToHex(r, g, b)}
+							colorname={(document.getElementById('name') || {}).value || ''}
+						/>
 						<ThemeProvider theme={red}>
 							<Slider
 								//defaultValue={50}
@@ -221,7 +219,6 @@ export default function OutlinedCard(props) {
 							/>
 						</ThemeProvider>
 						<p>
-							{' '}
 							R,G,B: ({red2}, {green2}, {blue2})
 						</p>
 						<p> Hex: {colorhex}</p>
@@ -261,7 +258,6 @@ export default function OutlinedCard(props) {
 							colorvalue={rgbToHex(r, g, b)}
 							colorname={(document.getElementById('name') || {}).value || ''}
 							dataFunc={dataval}
-
 							//storage={props.storage}
 						/>
 					</Space>

@@ -4,13 +4,12 @@ import Fab from '@mui/material/Fab'
 import { makeStyles } from '@material-ui/core/styles'
 import { pink } from '@mui/material/colors'
 import { useState, useEffect } from 'react'
-import Grid from '@mui/material/Grid'
 import AddIcon from '@mui/icons-material/Add'
 import OutlinedCard from './card'
 import { ImageList } from '@mui/material'
 import Newbox from './box'
-import { Box } from '@material-ui/core'
 import styled from '@emotion/styled'
+import Welcomepage from './welcome'
 
 const Space = styled('div')`
 	margin-top: 20px;
@@ -57,6 +56,7 @@ const Frontpage = ({}) => {
 	const classes = useStyles()
 	const [isShown, setIsShown] = useState(false)
 	const [colors, setcolor] = useState([])
+	const [clr, setclr] = useState(false)
 
 	const handleClick = () => {
 		setIsShown((current) => !current)
@@ -70,17 +70,9 @@ const Frontpage = ({}) => {
 			tempcolors.push(hex)
 		} else console.log(tempcolors)
 		setcolor(tempcolors)
+		setclr(true)
 	}
-	function nameFunc(name) {
-		let colornames = []
-		colorname.forEach((clr) => {
-			colornames.push(clr)
-		})
-		if (name !== '') {
-			colornames.push(name)
-		} else console.log(colornames)
-		setcolorname(colornames)
-	}
+
 	return (
 		<div>
 			<div className={classes.todoItem}>
@@ -94,25 +86,24 @@ const Frontpage = ({}) => {
 					<AddIcon sx={{ color: pink[200], fontSize: 40 }} />
 				</Fab>
 
+				{isShown == false && clr == false && <Welcomepage />}
+
 				{isShown && (
 					<OutlinedCard
 						newFunc={alertFunc}
-						nameFunc={nameFunc}
 						count={isShown}
 						changeState={handleClick}
-						//storage={handle}
 					/>
 				)}
 			</div>
 
 			<div>
-				<ImageList sx={{ width: 1500, height: 600 }} cols={6} rowHeight={5}>
+				<ImageList sx={{ width: 1500, height: 500 }} cols={7} rowHeight={5}>
 					{isShown == false &&
 						colors.map((color) => {
 							return <Newbox hexcolor={color} />
 						})}
 				</ImageList>
-				<Space></Space>
 			</div>
 		</div>
 	)
