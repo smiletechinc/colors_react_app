@@ -31,7 +31,7 @@ export function Login() {
 				variant="outlined"
 				size="medium"
 				onClick={printname}
-				href="http://localhost:3000/"
+				href="http://localhost:3000/firstpage"
 			>
 				{' '}
 				Submit{' '}

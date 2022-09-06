@@ -1,33 +1,39 @@
-import Header from '../components/header'
-import Frontpage from '../components/Frontpage'
-import Todo from '../components/Todo'
+import React from 'react'
+import styled from '@emotion/styled'
+import { Button } from '@material-ui/core'
 
-export default function Index({ stars }) {
+const Gap = styled('div')`
+	margin-top: 150px;
+	padding: 0 600px;
+	padding-top: 1px;
+`
+export default function Index() {
 	return (
-		<main>
-			<Header />
-			<Frontpage />
-		</main>
+		<Gap>
+			<h1> You are not logged in.</h1>
+			<div>
+				<h1> Login to create your own collection of colors</h1>
+				<Button
+					variant="outlined"
+					size="medium"
+					href="http://localhost:3000/login"
+				>
+					{' '}
+					Log In{' '}
+				</Button>
+			</div>
+			<div>
+				<h1> Proceed without logging in? </h1>
+
+				<Button
+					variant="outlined"
+					size="medium"
+					href="http://localhost:3000/firstpage"
+				>
+					{' '}
+					Proceed{' '}
+				</Button>
+			</div>
+		</Gap>
 	)
-}
-
-export async function getServerSideProps() {
-	try {
-		const res = await fetch(
-			'https://api.github.com/repos/ooade/NextSimpleStarter'
-		)
-		const json = await res.json()
-
-		return {
-			props: {
-				stars: json.stargazers_count,
-			},
-		}
-	} catch (error) {
-		return {
-			props: {
-				stars: 0,
-			},
-		}
-	}
 }
