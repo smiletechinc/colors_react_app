@@ -72,7 +72,10 @@ const Frontpage = ({}) => {
 		setcolor(tempcolors)
 		setclr(true)
 	}
-
+	const removeBox = (color) => {
+		const filteredTodos = colors.filter((v) => v !== color)
+		setcolor(filteredTodos)
+	}
 	return (
 		<div>
 			<div className={classes.todoItem}>
@@ -98,10 +101,10 @@ const Frontpage = ({}) => {
 			</div>
 
 			<div>
-				<ImageList sx={{ width: 1500, height: 500 }} cols={7} rowHeight={5}>
+				<ImageList sx={{ width: 1500, height: 600 }} cols={7} rowHeight={5}>
 					{isShown == false &&
 						colors.map((color) => {
-							return <Newbox hexcolor={color} />
+							return <Newbox hexcolor={color} removeBox={removeBox} />
 						})}
 				</ImageList>
 			</div>

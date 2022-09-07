@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { makeStyles } from '@material-ui/core/styles'
 import Box from '@mui/material/Box'
-
+import { Fab } from '@mui/material'
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 const Space = styled('div')`
 	align-items: center;
 	justify-content: space-between;
@@ -13,11 +14,12 @@ const Space = styled('div')`
 	max-width: 1024px;
 `
 const Gap = styled('div')`
-	margin-top: 0px;
 	padding: 0 30px;
-	padding-top: 1px;
 `
-
+const Right = styled('div')`
+	margin-top: 2px;
+	padding: 0 123px;
+`
 export default function Newbox(props) {
 	const hex = props.hexcolor
 	// console.log("box:", hex, name)
@@ -32,6 +34,7 @@ export default function Newbox(props) {
 		<div>
 			<h1>{props.data}</h1>
 			<Space>
+			
 				<Box
 					sx={
 						({
@@ -43,12 +46,17 @@ export default function Newbox(props) {
 						)
 					}
 					className={classes.color}
+					
 				>
+					<Right>
+					<DeleteTwoToneIcon onClick={()=>props.removeBox(hex)}/>
+					</Right>
+
 					<Gap>
-						{' '}
-						<h5>{hex}</h5>
+						<h4>{hex}</h4>
 						{/* <h5>{name}</h5> */}
 					</Gap>
+
 				</Box>
 			</Space>
 		</div>
